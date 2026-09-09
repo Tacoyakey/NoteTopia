@@ -11,6 +11,7 @@ import { useT } from '../i18n/LanguageProvider'
 import { tAll } from '../i18n/i18n'
 import { isTypingTarget } from '../dom/focus'
 import { useStudioMode } from '../layout/useStudioMode'
+import { launchAnnouncementsReady, START_TOUR_FINISHED } from '../tutorial/firstRun'
 
 const OPEN_EVENT = 'notetopia-open-announce'
 
@@ -24,19 +25,27 @@ export function AnnounceOverlay() {
   const { chosen } = useStudioMode()
 
   useEffect(() => {
-    if (!chosen) return
-    if (
-      shouldShowAnnouncement(
-        readDismissedAnnouncementId(),
-        readSessionAnnouncementId(),
-        current.id,
-      )
-    ) {
-      setOpen(true)
+    const tryLaunch = () => {
+      if (!chosen) return
+      if (!launchAnnouncementsReady()) return
+      if (
+        shouldShowAnnouncement(
+          readDismissedAnnouncementId(),
+          readSessionAnnouncementId(),
+          current.id,
+        )
+      ) {
+        setOpen(true)
+      }
     }
+    tryLaunch()
     const openForced = () => setOpen(true)
     window.addEventListener(OPEN_EVENT, openForced)
-    return () => window.removeEventListener(OPEN_EVENT, openForced)
+    window.addEventListener(START_TOUR_FINISHED, tryLaunch)
+    return () => {
+      window.removeEventListener(OPEN_EVENT, openForced)
+      window.removeEventListener(START_TOUR_FINISHED, tryLaunch)
+    }
   }, [current.id, chosen])
 
   useEffect(() => {

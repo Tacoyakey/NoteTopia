@@ -17,7 +17,7 @@ import { createDemoSong } from '../music/demoSong'
 import { getDefaultWorldSettings } from '../world/worldLayout'
 import { LANE_HEIGHT, clampLaneHeight } from '../composer/dawLayout'
 import { v4 as uuidv4 } from 'uuid'
-import { t } from '../i18n/i18n'
+import { dismissBootSplash } from '../boot/splash'
 import { setPlayheadBeat } from '../audio/playheadBus'
 import { nextNoteSelection } from '../music/noteSelection'
 
@@ -498,7 +498,10 @@ export function SongProvider({ children }: { children: ReactNode }) {
       } catch {
         /* keep demo song */
       } finally {
-        if (!cancelled) setHydrated(true)
+        if (!cancelled) {
+          setHydrated(true)
+          dismissBootSplash()
+        }
       }
     })()
     return () => {
@@ -572,11 +575,7 @@ export function SongProvider({ children }: { children: ReactNode }) {
   )
 
   if (!hydrated) {
-    return (
-      <SongContext.Provider value={value}>
-        <div className="app-loading">{t('ui.loading')}</div>
-      </SongContext.Provider>
-    )
+    return <SongContext.Provider value={value}>{null}</SongContext.Provider>
   }
 
   return <SongContext.Provider value={value}>{children}</SongContext.Provider>

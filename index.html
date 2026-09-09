@@ -7,9 +7,53 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="description" content="NoteTopia Alpha by Takuya — unofficial fan composer. Not affiliated with Ubisoft or Growtopia. 100% in the browser." />
     <title>NoteTopia</title>
+    <style>
+      html, body, #root { height: 100%; margin: 0; background: #000; }
+      #boot-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: #000;
+        color: #f2f2f2;
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        transition: opacity 0.28s ease;
+      }
+      #boot-splash.boot-splash-out { opacity: 0; pointer-events: none; }
+      #boot-splash img { width: 48px; height: 46px; }
+      #boot-splash p { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
+      #boot-splash .boot-bar {
+        width: 96px;
+        height: 3px;
+        border-radius: 999px;
+        background: #1a1a1a;
+        overflow: hidden;
+      }
+      #boot-splash .boot-bar span {
+        display: block;
+        height: 100%;
+        width: 40%;
+        background: #3ddc84;
+        animation: boot-slide 0.9s ease-in-out infinite;
+      }
+      @keyframes boot-slide {
+        0% { transform: translateX(-120%); }
+        100% { transform: translateX(340%); }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot-splash" aria-busy="true" aria-live="polite">
+      <img src="/favicon.svg" alt="" width="48" height="46" />
+      <p>NoteTopia</p>
+      <div class="boot-bar"><span></span></div>
+    </div>
     <div id="root"></div>
+    <script>window.__notetopiaBoot = Date.now()</script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
