@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/world/sun.png" />
+    <link rel="apple-touch-icon" href="/world/sun.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="description" content="NoteTopia Alpha by Takuya — unofficial fan composer. Not affiliated with Ubisoft or Growtopia. 100% in the browser." />
@@ -24,7 +25,6 @@
         transition: opacity 0.28s ease;
       }
       #boot-splash.boot-splash-out { opacity: 0; pointer-events: none; }
-      #boot-splash img { width: 48px; height: 46px; }
       #boot-splash p { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; }
       #boot-splash .boot-bar {
         width: 96px;
@@ -48,7 +48,6 @@
   </head>
   <body>
     <div id="boot-splash" aria-busy="true" aria-live="polite">
-      <img src="/favicon.svg" alt="" width="48" height="46" />
       <p>NoteTopia</p>
       <div class="boot-bar"><span></span></div>
     </div>
