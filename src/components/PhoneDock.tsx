@@ -11,7 +11,7 @@ export function PhoneDock() {
   const composerOpen = !simple && state.mode === 'composer'
 
   return (
-    <nav className="phone-dock" aria-label={t('ui.phoneDock')}>
+    <nav className="phone-dock" aria-label={t('ui.phoneDock')} data-tour="phone-dock">
       <button
         type="button"
         className={`phone-dock-btn ${state.worldTool === 'select' && !composerOpen ? 'active' : ''}`}

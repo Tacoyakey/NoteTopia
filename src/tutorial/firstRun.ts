@@ -1,3 +1,5 @@
+import { readPhoneLayout } from '../layout/phone'
+
 const SEEN_KEY = 'notetopia-seen-start-tour'
 const AWAIT_KEY = 'notetopia-await-start-tour'
 export const START_TOUR_FINISHED = 'notetopia-start-tour-finished'
@@ -43,7 +45,9 @@ export function markStartTourSeen(): void {
 }
 
 export function startPrimaryTour(): void {
-  window.dispatchEvent(new CustomEvent('notetopia-open-tutorial', { detail: { id: 'start' } }))
+  const id =
+    typeof window !== 'undefined' && readPhoneLayout(window) ? 'phone' : 'start'
+  window.dispatchEvent(new CustomEvent('notetopia-open-tutorial', { detail: { id } }))
 }
 
 /** Launch popups wait until the first-run tour is finished or skipped. */

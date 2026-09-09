@@ -1,6 +1,6 @@
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb'
 import type { ProjectData, Song, WorldSettings } from '../music/types'
-import { createDemoSong } from '../music/demoSong'
+import { createEmptySong } from '../music/SongModel'
 import { getDefaultWorldSettings } from '../world/worldLayout'
 import { v4 as uuidv4 } from 'uuid'
 import { parseSong, parseWorldSettings, assertFileSize, MAX_IMPORT_BYTES } from './projectSchema'
@@ -66,8 +66,7 @@ export async function deleteProject(id: string): Promise<void> {
 
 export async function createNewProject(name?: string): Promise<ProjectData> {
   const id = uuidv4()
-  const song = createDemoSong()
-  if (name) song.name = name
+  const song = createEmptySong(name ?? 'Untitled')
   return saveProject(id, song.name, song, getDefaultWorldSettings())
 }
 

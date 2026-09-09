@@ -5,7 +5,9 @@ import { useT } from '../i18n/LanguageProvider'
 import { LanguageSelect } from '../i18n/LanguageSelect'
 import { isTabbableControl, isTypingTarget } from '../dom/focus'
 import { useStudioMode } from '../layout/useStudioMode'
+import { usePhoneLayout } from '../layout/usePhoneLayout'
 import { BookOpen, ChevronDown } from './icons'
+import type { TourId } from '../tutorial/tours'
 
 function Kbd({ children }: { children: ReactNode }) {
   return <kbd className="help-kbd">{children}</kbd>
@@ -95,7 +97,11 @@ export function HelpOverlay() {
   const { state, dispatch } = useSong()
   const { t } = useT()
   const { simple } = useStudioMode()
+  const phone = usePhoneLayout()
   const [open, setOpen] = useState(false)
+  const tourIds: TourId[] = phone
+    ? ['phone', 'start', 'midi', 'sheet']
+    : ['start', 'midi', 'sheet', 'phone']
 
   useEffect(() => {
     const toggle = () => setOpen((v) => !v)
@@ -143,7 +149,7 @@ export function HelpOverlay() {
         <p className="help-lead">{simple ? t('intro.simpleLead') : t('help.lead')}</p>
         <h4 className="help-section-title">{t('tour.title')}</h4>
         <div className="tour-picks">
-          {(['start', 'midi', 'sheet'] as const).map((id) => (
+          {tourIds.map((id) => (
             <button
               key={id}
               type="button"

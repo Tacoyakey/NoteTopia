@@ -157,6 +157,34 @@
         "title": "GMSF を書き出す",
         "body": "Export GMSF は kixnoway.com で開きます。GMSF の列数で空列を埋めます。.gtmusic は古いテキスト。Lua TXT は NoteTopia 用です。"
       }
+    },
+    "phone": {
+      "title": "スマホ向け",
+      "lead": "ドック、ドラッグで見回す、Composer、保存。",
+      "s1": {
+        "title": "スマホは別画面",
+        "body": "iPhone と Android 向けです。World は楽譜のまま。指一本でドラッグして見回します。デスクトップの選択ツールと同じです。"
+      },
+      "s2": {
+        "title": "下のドック",
+        "body": "選択は見回してタイルをピック。ビルドは置いて壊す。再生は中央。ヘルプは？です。"
+      },
+      "s3": {
+        "title": "ドラッグで見回す",
+        "body": "スマホでは選択が最初からオンです。空きをドラッグして画面を動かします。タイルをタップして選びます。置くときはビルドに切り替えます。"
+      },
+      "s4": {
+        "title": "再生",
+        "body": "ドックの丸いボタンで再生と一時停止。BPM と追加ツールはドックの上のバーにあります。"
+      },
+      "s5": {
+        "title": "Composer",
+        "body": "ピアノボタンでアレンジを開きます。空きをドラッグすると World と同じくパンします。名前が邪魔ならトラックをアイコン＋ミュート／ソロに縮められます。"
+      },
+      "s6": {
+        "title": "保存",
+        "body": "保存はこのブラウザ内。新規プロジェクトは楽譜を空にします。音符があるときは先に .notetopia か GMSF の保存を聞きます。"
+      }
     }
   },
   "ui": {
@@ -205,6 +233,12 @@
     "loadJson": "JSON を読み込む",
     "loadProject": "プロジェクトを読み込む",
     "newProject": "新規プロジェクト",
+    "newProjectDirty": "このプロジェクトには音符があります。空のプロジェクトを始める前に保存しますか？",
+    "newProjectSaveNotetopia": ".notetopia を保存",
+    "newProjectSaveGmsf": "GMSF を保存",
+    "newProjectDiscard": "保存しない",
+    "collapseTracks": "トラックをアイコン・ミュート・ソロだけにする",
+    "expandTracks": "トラック名を表示",
     "save": "保存",
     "saveTitle": "このブラウザに保存",
     "saved": "保存しました",

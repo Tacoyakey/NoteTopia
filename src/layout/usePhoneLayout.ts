@@ -8,15 +8,18 @@ export function usePhoneLayout(): boolean {
 
   useEffect(() => {
     const sync = () => setPhone(readPhoneLayout(window))
-    const mq = window.matchMedia('(pointer: coarse)')
+    const coarse = window.matchMedia('(pointer: coarse)')
+    const hover = window.matchMedia('(hover: none)')
     window.addEventListener('resize', sync)
     window.addEventListener('orientationchange', sync)
-    mq.addEventListener('change', sync)
+    coarse.addEventListener('change', sync)
+    hover.addEventListener('change', sync)
     sync()
     return () => {
       window.removeEventListener('resize', sync)
       window.removeEventListener('orientationchange', sync)
-      mq.removeEventListener('change', sync)
+      coarse.removeEventListener('change', sync)
+      hover.removeEventListener('change', sync)
     }
   }, [])
 

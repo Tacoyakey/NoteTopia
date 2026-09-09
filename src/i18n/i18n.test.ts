@@ -80,7 +80,9 @@ describe('i18n', () => {
     expect(t('tour.step', { n: 2, total: 7 })).toBe('2 / 7')
     expect(t('tour.start.s1.body')).toContain('Help')
     expect(t('tour.midi.s3.body')).toContain('MIDI')
-    expect(t('tour.sheet.s4.body')).toContain('GMSF')
+    expect(t('tour.phone.title')).toContain('phone')
+    expect(t('ui.newProjectDirty')).toContain('notes')
+    expect(t('ui.collapseTracks')).toContain('icon')
   })
 
   it('lists twenty launch locales', () => {

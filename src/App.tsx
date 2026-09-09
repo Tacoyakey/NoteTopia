@@ -593,7 +593,7 @@ function AppContent() {
             studio.setMode(mode)
             if (mode === 'simple') {
               dispatch({ type: 'SET_MODE', mode: 'world' })
-              dispatch({ type: 'SET_WORLD_TOOL', tool: 'build' })
+              dispatch({ type: 'SET_WORLD_TOOL', tool: phone ? 'select' : 'build' })
             }
           }}
         />

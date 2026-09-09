@@ -11,6 +11,7 @@ export interface LayoutPrefs {
   paletteMin: boolean
   settingsMin: boolean
   sheetListMin: boolean
+  tracksMin: boolean
 }
 
 const DEFAULTS: LayoutPrefs = {
@@ -22,6 +23,7 @@ const DEFAULTS: LayoutPrefs = {
   paletteMin: true,
   settingsMin: false,
   sheetListMin: true,
+  tracksMin: true,
 }
 
 function load(): LayoutPrefs {

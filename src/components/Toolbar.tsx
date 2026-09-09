@@ -18,6 +18,7 @@ import { APP_NAME, APP_AUTHOR, APP_STAGE } from '../branding'
 import { useStudioMode } from '../layout/useStudioMode'
 import { useT } from '../i18n/LanguageProvider'
 import { LanguageSelect } from '../i18n/LanguageSelect'
+import { songHasWork } from '../music/songWork'
 import {
   AudioLines,
   AudioWaveform,
@@ -52,7 +53,7 @@ interface ToolbarProps {
 }
 
 export function Toolbar({ onImportSummary, onMidiImport, bouncing, onBounce }: ToolbarProps) {
-  const { state, dispatch, undo, redo, pushHistory } = useSong()
+  const { state, dispatch, undo, redo, pushHistory, canUndo, canRedo } = useSong()
   const { t, locale } = useT()
   const { simple } = useStudioMode()
   const toolbarRef = useRef<HTMLDivElement>(null)
@@ -65,6 +66,7 @@ export function Toolbar({ onImportSummary, onMidiImport, bouncing, onBounce }: T
   const [showFileMenu, setShowFileMenu] = useState(false)
   const [showBounceMenu, setShowBounceMenu] = useState(false)
   const [projects, setProjects] = useState<Awaited<ReturnType<typeof listProjects>>>([])
+  const [newProjectPrompt, setNewProjectPrompt] = useState(false)
   const pack = useToolbarFit(toolbarRef, `${locale}:${saveStatus}:${bouncing ? 1 : 0}:${state.mode}:${simple ? 1 : 0}`)
 
   useEffect(() => {
@@ -195,6 +197,15 @@ export function Toolbar({ onImportSummary, onMidiImport, bouncing, onBounce }: T
   }
 
   const handleNewProject = async () => {
+    setShowFileMenu(false)
+    if (songHasWork(state.song)) {
+      setNewProjectPrompt(true)
+      return
+    }
+    await startBlankProject()
+  }
+
+  const startBlankProject = async () => {
     const project = await createNewProject()
     dispatch({
       type: 'LOAD_PROJECT',
@@ -321,10 +332,20 @@ export function Toolbar({ onImportSummary, onMidiImport, bouncing, onBounce }: T
 
       <div className={`toolbar-right${showFileMenu || showBounceMenu ? ' is-menu-open' : ''}`}>
         <div className="tb-cluster">
-          <button className="btn-icon-tool" onClick={undo} title={t('ui.undo')}>
+          <button
+            className={`btn-icon-tool${canUndo ? ' is-ready' : ''}`}
+            onClick={undo}
+            disabled={!canUndo}
+            title={t('ui.undo')}
+          >
             <Undo2 size={16} />
           </button>
-          <button className="btn-icon-tool" onClick={redo} title={t('ui.redo')}>
+          <button
+            className={`btn-icon-tool${canRedo ? ' is-ready' : ''}`}
+            onClick={redo}
+            disabled={!canRedo}
+            title={t('ui.redo')}
+          >
             <Redo2 size={16} />
           </button>
         </div>
@@ -691,6 +712,52 @@ export function Toolbar({ onImportSummary, onMidiImport, bouncing, onBounce }: T
           </div>
         </div>
       )}
+
+      {newProjectPrompt ? (
+        <div className="project-modal-overlay" onClick={() => setNewProjectPrompt(false)}>
+          <div className="project-modal new-project-prompt" onClick={(e) => e.stopPropagation()}>
+            <h3>{t('ui.newProject')}</h3>
+            <p className="new-project-copy">{t('ui.newProjectDirty')}</p>
+            <div className="new-project-actions">
+              <button
+                type="button"
+                className="btn-tool btn-tool-primary"
+                onClick={() => {
+                  handleSaveAs()
+                  setNewProjectPrompt(false)
+                  void startBlankProject()
+                }}
+              >
+                {t('ui.newProjectSaveNotetopia')}
+              </button>
+              <button
+                type="button"
+                className="btn-tool"
+                onClick={() => {
+                  downloadGmsf(state.song, state.worldSettings.convertModel, state.worldSettings.songLengthColumns)
+                  setNewProjectPrompt(false)
+                  void startBlankProject()
+                }}
+              >
+                {t('ui.newProjectSaveGmsf')}
+              </button>
+              <button
+                type="button"
+                className="btn-tool"
+                onClick={() => {
+                  setNewProjectPrompt(false)
+                  void startBlankProject()
+                }}
+              >
+                {t('ui.newProjectDiscard')}
+              </button>
+              <button type="button" className="btn-tool" onClick={() => setNewProjectPrompt(false)}>
+                {t('ui.close')}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }

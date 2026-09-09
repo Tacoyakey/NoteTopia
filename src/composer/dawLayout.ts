@@ -1,4 +1,5 @@
 export const DAW_GUTTER = 220
+export const DAW_GUTTER_SLIM = 78
 export const LANE_HEIGHT = 84
 export const LANE_HEIGHT_MIN = 44
 export const LANE_HEIGHT_MAX = 120

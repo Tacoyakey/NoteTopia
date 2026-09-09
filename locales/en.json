@@ -165,6 +165,34 @@
         "title": "Export GMSF",
         "body": "Export GMSF opens in kixnoway.com. GMSF columns pads empty columns at the end. .gtmusic is the older text format. Lua TXT is a NoteTopia blueprint."
       }
+    },
+    "phone": {
+      "title": "On a phone",
+      "lead": "Dock, drag to look, Composer, and save.",
+      "s1": {
+        "title": "Phones are different",
+        "body": "This walkthrough is for iPhone and Android. World stays on the sheet. Drag with one finger to look around — same as Select on desktop."
+      },
+      "s2": {
+        "title": "Bottom dock",
+        "body": "Select looks around and picks tiles. Build places and breaks them. Play sits in the middle. Help is the question mark."
+      },
+      "s3": {
+        "title": "Drag to look",
+        "body": "Select is the default on a phone. Drag empty space to move the view. Tap a tile to pick it. Switch to Build when you want to stamp notes."
+      },
+      "s4": {
+        "title": "Play",
+        "body": "The round button in the dock plays and pauses. BPM and extra tools sit in the floating bar above the dock."
+      },
+      "s5": {
+        "title": "Composer",
+        "body": "The piano button opens Arrange. Drag empty space to pan, like World. Shrink the track list to icon + M/S if names are in the way."
+      },
+      "s6": {
+        "title": "Keep it",
+        "body": "Save stores the song in this browser. New project wipes the sheet — you’ll be asked to save a .notetopia or GMSF first if there are notes."
+      }
     }
   },
   "ui": {
@@ -213,6 +241,12 @@
     "loadJson": "Load JSON",
     "loadProject": "Load project",
     "newProject": "New project",
+    "newProjectDirty": "This project has notes. Save it before starting a blank one?",
+    "newProjectSaveNotetopia": "Save .notetopia",
+    "newProjectSaveGmsf": "Save GMSF",
+    "newProjectDiscard": "Don’t save",
+    "collapseTracks": "Shrink tracks to icon, mute, and solo",
+    "expandTracks": "Show track names",
     "save": "Save",
     "saveTitle": "Save in this browser",
     "saved": "Saved",

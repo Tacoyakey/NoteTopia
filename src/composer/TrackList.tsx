@@ -11,11 +11,13 @@ import { reorderShiftY, type TrackReorder } from './trackReorder'
 export function TrackList({
   embedded = false,
   laneHeight = 84,
+  slim = false,
   reorder = null,
   onReorderChange,
 }: {
   embedded?: boolean
   laneHeight?: number
+  slim?: boolean
   reorder?: TrackReorder | null
   onReorderChange?: (next: TrackReorder | null) => void
 }) {
@@ -89,7 +91,7 @@ export function TrackList({
 
   return (
     <div
-      className={`track-list${embedded ? ' track-list-embedded' : ''}${compact ? ' is-compact' : ''}${reorder ? ' is-reordering' : ''}`}
+      className={`track-list${embedded ? ' track-list-embedded' : ''}${compact ? ' is-compact' : ''}${slim ? ' is-slim' : ''}${reorder ? ' is-reordering' : ''}`}
     >
       {!embedded && (
         <div className="track-list-header">
@@ -132,7 +134,7 @@ export function TrackList({
               onClick={() => dispatch({ type: 'SELECT_TRACK', trackId: track.id })}
             >
               <div className="track-item-head">
-                {embedded && state.song.tracks.length > 1 ? (
+                {embedded && !slim && state.song.tracks.length > 1 ? (
                   <button
                     type="button"
                     className="track-grip"
@@ -167,6 +169,7 @@ export function TrackList({
                     title={sheetMusicLabel(track.gtNumType, INSTRUMENTS.find((i) => i.id === track.instrument)?.label)}
                   />
                 </button>
+                {slim ? null : (
                 <input
                   className="track-name-input"
                   value={track.name}
@@ -179,6 +182,7 @@ export function TrackList({
                   }}
                   onClick={(e) => e.stopPropagation()}
                 />
+                )}
                 <button
                   type="button"
                   className={`btn-mini btn-mute ${track.muted ? 'active' : ''}`}
@@ -214,6 +218,7 @@ export function TrackList({
                   S
                 </button>
               </div>
+              {slim ? null : (
               <div className="track-controls">
                 <input
                   type="range"
@@ -248,6 +253,7 @@ export function TrackList({
                   </button>
                 )}
               </div>
+              )}
             </div>
           )
         })}

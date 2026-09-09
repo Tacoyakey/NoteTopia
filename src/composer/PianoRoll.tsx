@@ -29,7 +29,7 @@ function noteSoundsAt(note: Note, beat: number): boolean {
 }
 
 interface DragState {
-  type: 'move' | 'resize' | 'create' | 'select' | 'seek' | 'pending' | 'paint' | 'velocity'
+  type: 'move' | 'resize' | 'create' | 'select' | 'seek' | 'pending' | 'paint' | 'velocity' | 'pan'
   noteId?: string
   startX: number
   startY: number
@@ -42,6 +42,8 @@ interface DragState {
   pendingBeat?: number
   pendingPitch?: number
   paintBeats?: number[]
+  startScrollBeat?: number
+  startScrollPitch?: number
 }
 
 export function PianoRoll() {
@@ -510,6 +512,15 @@ export function PianoRoll() {
       return
     }
 
+    if (drag.type === 'pan') {
+      dispatch({
+        type: 'SET_SCROLL',
+        scrollBeat: Math.max(0, (drag.startScrollBeat ?? 0) - (x - drag.startX) / beatWidth),
+        scrollPitch: Math.max(0, (drag.startScrollPitch ?? 0) + (y - drag.startY) / ROW_HEIGHT),
+      })
+      return
+    }
+
     if (drag.type === 'move' && drag.origNotes) {
       const startBeat = beatFromX(drag.startX)
       const currentBeat = beatFromX(x)
@@ -553,6 +564,14 @@ export function PianoRoll() {
             pendingPitch: drag.pendingPitch,
             pendingBeat: drag.pendingBeat,
             paintBeats: paintNoteBeats(drag.pendingBeat, beatFromX(x), state.snap),
+          }
+        } else if (phone && state.editTool === 'select') {
+          dragRef.current = {
+            type: 'pan',
+            startX: drag.startX,
+            startY: drag.startY,
+            startScrollBeat: state.scrollBeat,
+            startScrollPitch: state.scrollPitch,
           }
         } else {
           dragRef.current = {

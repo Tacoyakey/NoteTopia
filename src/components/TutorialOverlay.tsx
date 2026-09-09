@@ -62,7 +62,7 @@ export function TutorialOverlay() {
 
   const close = useCallback(() => {
     window.dispatchEvent(new Event('notetopia-close-export-menu'))
-    if (tour?.id === 'start') markStartTourSeen()
+    if (tour?.id === 'start' || tour?.id === 'phone') markStartTourSeen()
     setTour(null)
     setIndex(0)
     setHole(null)

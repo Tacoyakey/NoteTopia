@@ -6,7 +6,7 @@ import { midiToLine, snapMidiToLine } from '../music/gtPitch'
 import { getSongDurationBeats, snapBeat } from '../music/timing'
 import { seekPlayback } from '../audio/seekPlayback'
 import { drawPlayheadLine } from './playhead'
-import { DAW_GUTTER, clampLaneHeight, laneNotePad } from './dawLayout'
+import { DAW_GUTTER, DAW_GUTTER_SLIM, clampLaneHeight, laneNotePad } from './dawLayout'
 import { TrackList } from './TrackList'
 import { laneDrawY, type TrackReorder } from './trackReorder'
 import type { Note, Track } from '../music/types'
@@ -14,21 +14,29 @@ import { useT } from '../i18n/LanguageProvider'
 import { getPlayheadBeat, subscribePlayhead } from '../audio/playheadBus'
 import { fitCanvas } from '../audio/canvasFit'
 import { noteSelectMode } from '../music/noteSelection'
-import { Layers } from '../components/icons'
+import { ChevronsLeft, ChevronsRight, Layers } from '../components/icons'
+import { usePhoneLayout } from '../layout/usePhoneLayout'
+import { useLayoutPrefs } from '../layout/useLayoutPrefs'
 
 interface ArrangeDrag {
-  type: 'move' | 'select'
+  type: 'move' | 'select' | 'pan'
   startX: number
   startY: number
   trackId?: string
   origNotes?: Map<string, { startBeat: number; pitch: number }>
   selectRect?: { x: number; y: number; w: number; h: number }
   additive?: boolean
+  startScrollBeat?: number
+  startScrollTop?: number
 }
 
 export function ArrangeView() {
   const { state, dispatch, pushHistory } = useSong()
   const { t } = useT()
+  const phone = usePhoneLayout()
+  const { prefs, update } = useLayoutPrefs()
+  const slim = phone && prefs.tracksMin
+  const gutter = slim ? DAW_GUTTER_SLIM : DAW_GUTTER
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const lanesRef = useRef<HTMLDivElement>(null)
   const rulerRef = useRef<HTMLDivElement>(null)
@@ -282,6 +290,16 @@ export function ArrangeView() {
     }
 
     if (mode === 'replace') dispatch({ type: 'CLEAR_SELECTION' })
+    if (phone && state.editTool === 'select' && mode === 'replace') {
+      dragRef.current = {
+        type: 'pan',
+        startX: x,
+        startY: y,
+        startScrollBeat: state.scrollBeat,
+        startScrollTop: lanesRef.current?.scrollTop ?? 0,
+      }
+      return
+    }
     dragRef.current = {
       type: 'select',
       startX: x,
@@ -301,6 +319,17 @@ export function ArrangeView() {
     const rect = canvas.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
+
+    if (drag.type === 'pan') {
+      dispatch({
+        type: 'SET_SCROLL',
+        scrollBeat: Math.max(0, (drag.startScrollBeat ?? 0) - (x - drag.startX) / beatWidth),
+      })
+      if (lanesRef.current) {
+        lanesRef.current.scrollTop = Math.max(0, (drag.startScrollTop ?? 0) - (y - drag.startY))
+      }
+      return
+    }
 
     if (drag.type === 'move' && drag.origNotes) {
       const dBeat = snapBeat(beatFromX(x) - beatFromX(drag.startX), state.snap)
@@ -459,9 +488,20 @@ export function ArrangeView() {
   return (
     <div className="daw-arrange" style={{ ['--lane-height' as string]: `${laneHeight}px` }}>
       <div className="daw-ruler-row">
-        <div className="daw-gutter-label">
-          <span>{t('ui.tracks')}</span>
+        <div className={`daw-gutter-label${slim ? ' is-slim' : ''}`}>
+          {slim ? null : <span>{t('ui.tracks')}</span>}
           <span className="track-list-header-actions">
+            {phone ? (
+              <button
+                type="button"
+                className="btn-icon"
+                title={slim ? t('ui.expandTracks') : t('ui.collapseTracks')}
+                aria-pressed={slim}
+                onClick={() => update({ tracksMin: !prefs.tracksMin })}
+              >
+                {slim ? <ChevronsRight size={14} /> : <ChevronsLeft size={14} />}
+              </button>
+            ) : null}
             <button
               type="button"
               className="btn-icon"
@@ -473,6 +513,7 @@ export function ArrangeView() {
             >
               +
             </button>
+            {slim ? null : (
             <button
               type="button"
               className="btn-icon"
@@ -481,6 +522,7 @@ export function ArrangeView() {
             >
               <Layers size={14} />
             </button>
+            )}
           </span>
         </div>
         <div
@@ -564,9 +606,10 @@ export function ArrangeView() {
         </div>
       </div>
       <div className="daw-body">
-        <div className="daw-headers" style={{ width: DAW_GUTTER }}>
+        <div className="daw-headers" style={{ width: gutter }}>
           <TrackList
             embedded
+            slim={slim}
             laneHeight={laneHeight}
             reorder={reorder}
             onReorderChange={setReorder}
@@ -576,7 +619,12 @@ export function ArrangeView() {
           <canvas
             ref={canvasRef}
             className="daw-lanes-canvas"
-            style={{ width: size.width, height: contentH }}
+            style={{
+              width: size.width,
+              height: contentH,
+              cursor: phone && state.editTool === 'select' ? 'grab' : 'default',
+              touchAction: 'none',
+            }}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}

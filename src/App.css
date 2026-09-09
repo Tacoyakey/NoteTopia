@@ -283,12 +283,18 @@ button,
   color: var(--text-primary);
 }
 
+.btn-icon-tool.is-ready,
+.btn-icon-tool.is-ready:hover:not(:disabled) {
+  color: #fff;
+}
+
 .btn-icon-tool:active:not(:disabled) {
   transform: scale(0.98);
 }
 
 .btn-icon-tool:disabled {
-  opacity: 0.5;
+  opacity: 0.38;
+  color: var(--text-muted);
   cursor: default;
 }
 
@@ -942,6 +948,12 @@ button,
   border-right: 1px solid var(--border);
 }
 
+.daw-gutter-label.is-slim {
+  width: 78px;
+  padding: 0 4px;
+  justify-content: center;
+}
+
 .daw-ruler {
   flex: 1;
   position: relative;
@@ -1357,6 +1369,20 @@ button,
   width: 18px;
   height: 18px;
   font-size: 9px;
+}
+
+.track-list-embedded.is-slim {
+  width: 78px;
+}
+
+.track-list-embedded.is-slim .track-item {
+  padding: 4px 2px;
+}
+
+.track-list-embedded.is-slim .track-item-head {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
 }
 
 .track-list-embedded .track-item {
@@ -4139,6 +4165,26 @@ button,
   font-weight: 600;
   text-align: left;
   color: var(--text-primary);
+}
+
+.new-project-copy {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.new-project-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.new-project-actions .btn-tool {
+  width: 100%;
+  justify-content: center;
+  margin: 0;
 }
 
 .project-list {
