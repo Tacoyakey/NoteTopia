@@ -33,7 +33,7 @@ describe('i18n', () => {
     expect(t('announce.dontShow')).toContain('Don’t show')
     expect(tAll('announce.post.welcome.items').length).toBeGreaterThan(8)
     expect(tAll('announce.post.welcome.wip').length).toBeGreaterThan(2)
-    expect(t('announce.post.welcome.heading')).toContain('thisistaku')
+    expect(t('announce.contact')).toContain('Discord')
     expect(t('about.creditDiscord')).toContain('thisistaku')
     expect(t('about.creditSprites')).not.toMatch(/local/i)
   })

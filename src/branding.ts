@@ -4,6 +4,7 @@ export const APP_STAGE = 'Alpha'
 export const APP_VERSION = APP_STAGE
 export const APP_YEARS = '2024–2026'
 export const APP_CREDIT = `${APP_NAME} by ${APP_AUTHOR} · ${APP_STAGE}`
+export const APP_DISCORD = 'thisistaku'
 
 export const ABOUT_LINKS = {
   growtopia: 'https://www.growtopiagame.com',

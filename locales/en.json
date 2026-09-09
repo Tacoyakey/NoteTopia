@@ -368,11 +368,12 @@
     "open": "Welcome",
     "dontShow": "Don’t show again",
     "close": "Close",
+    "contact": "If you have any suggestions or bug reports, contact me on Discord!",
     "ready": "What’s in",
     "wip": "Still cooking",
     "post": {
       "welcome": {
-        "heading": "NoteTopia is free to use for planning music. Write in the browser, then see it as a Growtopia-style 14-lane sheet. Alpha, unofficial, not Ubisoft. Need help, found a bug, or have a suggestion? Discord: thisistaku",
+        "heading": "NoteTopia is free to use for planning music. Write in the browser, then see it as a Growtopia-style 14-lane sheet. Alpha, unofficial, not Ubisoft.",
         "items": [
           "World Mode: 14-lane pitch grid, place/break tiles, weather (sunny, stargazing, nothingness, solid color), follow-playhead, density, and zoom.",
           "World tools: Build, select, draw, slice. Shift for sharps, Alt for flats. Right-click breaks tiles.",
