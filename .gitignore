@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Local third-party clones (do not commit)
+_reference/
+
 # Local Growtopia audio / sheet sprites (do not commit or redistribute)
 public/notes/*.wav
 public/notes/*.ogg
