@@ -18,6 +18,7 @@ import { bounceSong, type BounceProgress } from './audio/bounce'
 import { SplitPane } from './layout/SplitPane'
 import { useLayoutPrefs } from './layout/useLayoutPrefs'
 import { usePhoneLayout } from './layout/usePhoneLayout'
+import { useAppViewportHeight } from './layout/useAppViewportHeight'
 import { useStudioMode } from './layout/useStudioMode'
 import { IntroOverlay } from './components/IntroOverlay'
 import { useSwipeToDismiss } from './hooks/useSwipeToDismiss'
@@ -96,6 +97,7 @@ function AppContent() {
   )
   const { prefs, update } = useLayoutPrefs()
   const phone = usePhoneLayout()
+  useAppViewportHeight()
   const studio = useStudioMode()
   const showComposer = !studio.simple && state.mode === 'composer'
   const [worldSheetOpen, setWorldSheetOpen] = useState(false)

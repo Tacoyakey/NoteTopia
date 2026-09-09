@@ -139,8 +139,8 @@ export function HelpOverlay() {
           <h3>{APP_NAME}</h3>
           <LanguageSelect />
         </div>
-        <p className="help-lead">{simple ? t('intro.simpleLead') : t('help.lead')}</p>
         <div className="help-body">
+        <p className="help-lead">{simple ? t('intro.simpleLead') : t('help.lead')}</p>
         <h4 className="help-section-title">{t('tour.title')}</h4>
         <div className="tour-picks">
           {(['start', 'midi', 'sheet'] as const).map((id) => (
