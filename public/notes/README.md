@@ -59,4 +59,4 @@ Play the demo song — if samples are detected, piano notes use the WAV instead 
 
 ## Legal note
 
-Growtopia audio assets are owned by Ubisoft. Only use files you are permitted to use. **Do not commit or redistribute copyrighted samples.** Public GitHub Pages builds omit these files.
+Growtopia audio assets are **© Ubisoft**, used with permission. They are not covered by NoteTopia’s MIT license. Missing files fall back to synthesizers.

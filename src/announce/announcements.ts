@@ -12,9 +12,9 @@ export type AnnouncementDef = {
 /** Newest first. The first entry is what pops on launch. */
 export const ANNOUNCEMENTS: AnnouncementDef[] = [
   {
-    id: '2026-09-09-tools-phone',
+    id: '2026-09-09-welcome-2',
     date: '2026-09-09',
-    post: 'toolsPhone',
+    post: 'welcome',
   },
 ]
 

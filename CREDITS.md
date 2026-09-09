@@ -7,16 +7,11 @@ NoteTopia is an unofficial fan project by **Takuya**. It is **not** affiliated w
 - App design, Composer DAW, World view, MIDI convert, and original weather/backdrop art: Takuya
 - License: MIT (`LICENSE`)
 
-## Growtopia / Ubisoft (not included in public builds)
+## Growtopia / Ubisoft
 
 Growtopia, Growtopia item names, sheet-music block art, and note samples are **© Ubisoft** (or their respective owners). All rights reserved.
 
-NoteTopia does **not** claim those assets. Public GitHub Pages builds omit game WAVs and sheet sprites. For personal local use you may place files you are allowed to use in:
-
-- `public/notes/` — WAV/OGG/MP3 named like GTMusicSim (`piano_1.wav`, …)
-- `public/tiles/` — 32×32 sheet-music PNGs
-
-If those folders are empty, playback uses Tone.js synthesizers and World draws fallback tiles.
+NoteTopia does **not** claim ownership of those assets. Sheet art and note samples are used **with permission from Ubisoft**. Fallback synthesizers and drawn tiles still run if files are missing.
 
 ## GMSF / kixnoway.com
 
@@ -36,11 +31,11 @@ Lua TXT from NoteTopia is a **NoteTopia blueprint**, not a kixnoway export.
 
 Pitch-lane tables, WAV index mapping, Audio Rack token format, and `.gtmusic` (`%cernmusicsim;`) follow [Cernodile’s Growtopia Music Simulator](https://github.com/cernodile/GTMusicSim) (AGPL-3.0). NoteTopia is a separate original codebase; GTMusicSim’s license applies to *their* code, not to NoteTopia.
 
-GTMusicSim does not ship audio. Same rule here.
+GTMusicSim does not ship audio. NoteTopia can play game samples when they are present.
 
-## Wiki sprites (local only)
+## Wiki sprites
 
-Sheet-music icons used in local World Mode were referenced from [Growtopia Wiki — Sheet Music](https://growtopiawiki.com/w/Sheet_Music_(block_category)). Wiki hosting does not transfer Ubisoft’s copyright.
+Sheet-music icons were referenced from [Growtopia Wiki — Sheet Music](https://growtopiawiki.com/w/Sheet_Music_(block_category)). Assets remain © Ubisoft.
 
 ## Open-source libraries
 

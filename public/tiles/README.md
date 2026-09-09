@@ -4,7 +4,7 @@ World Mode loads 32×32 (or scaled) PNGs from this folder. Missing files fall ba
 
 Sheet-music sprites currently in this folder were fetched from [Growtopia Wiki — Sheet Music (block category)](https://growtopiawiki.com/w/Sheet_Music_(block_category)) (`cdn.growtopiawiki.com/sprites/{id}.png`) at the project owner’s request.
 
-Growtopia item art is owned by Ubisoft. Keep these files for **local** World Mode only; they are gitignored and omitted from GitHub Pages builds. Do not redistribute them as your own. Missing PNGs fall back to drawn tiles.
+Growtopia item art is **© Ubisoft**, used with permission. Assets remain Ubisoft’s; NoteTopia does not claim them. Missing PNGs fall back to drawn tiles.
 
 ```
 piano.png / flat_piano.png / sharp_piano.png

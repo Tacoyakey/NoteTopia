@@ -24,13 +24,18 @@ describe('i18n', () => {
   it('has About copy that disclaims Ubisoft affiliation', () => {
     expect(t('about.unofficial')).toMatch(/unofficial/i)
     expect(t('about.unofficial')).toContain('Ubisoft')
+    expect(t('about.unofficial')).toMatch(/permission/i)
     expect(t('ui.about')).toBe('About')
   })
 
   it('has What’s new copy', () => {
-    expect(t('announce.title')).toBe('What’s new')
+    expect(t('announce.title')).toBe('Welcome')
     expect(t('announce.dontShow')).toContain('Don’t show')
-    expect(tAll('announce.post.toolsPhone.items').length).toBeGreaterThan(2)
+    expect(tAll('announce.post.welcome.items').length).toBeGreaterThan(8)
+    expect(tAll('announce.post.welcome.wip').length).toBeGreaterThan(2)
+    expect(t('announce.post.welcome.heading')).toContain('thisistaku')
+    expect(t('about.creditDiscord')).toContain('thisistaku')
+    expect(t('about.creditSprites')).not.toMatch(/local/i)
   })
 
   it('has overlay copy for notes from other instruments', () => {

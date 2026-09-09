@@ -3478,7 +3478,7 @@ button,
 }
 
 .about-panel {
-  width: min(420px, calc(100vw - 32px));
+  width: min(460px, calc(100vw - 32px));
 }
 
 .about-stage {
@@ -3709,7 +3709,16 @@ button,
 }
 
 .announce-panel {
-  width: min(440px, calc(100vw - 32px));
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(88vh, 820px);
+}
+
+.announce-heading {
+  margin: 4px 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.5;
 }
 
 .announce-date {
@@ -3717,13 +3726,6 @@ button,
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.04em;
-}
-
-.announce-heading {
-  margin: 4px 0 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
 }
 
 .announce-list {
@@ -3750,7 +3752,7 @@ button,
 }
 
 .announce-actions .btn-tool {
-  margin: 16px 0 0;
+  margin: 0;
 }
 
 .announce-actions .btn-tool:not(.btn-tool-primary) {

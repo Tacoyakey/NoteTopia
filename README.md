@@ -37,11 +37,9 @@ npm run build
 npm run preview
 ```
 
-## GitHub Pages
+## Deploy
 
-Push to `main` and the included GitHub Actions workflow builds and deploys automatically.
-
-Set the repo name to `NoteTopia` or update `base` in `vite.config.ts` to match your repository name.
+Live site is a Cloudflare Worker (`notetopia`). Push to `main` rebuilds it. GitHub Actions only runs tests, lint, and `npm run build`.
 
 ## Architecture
 
@@ -78,4 +76,4 @@ Help, buttons, and instructions live in JSON files under [`locales/`](locales/RE
 
 Original NoteTopia code is [MIT](LICENSE). Third-party notices, Growtopia/Ubisoft disclaimers, and library credits: [CREDITS.md](CREDITS.md).
 
-Growtopia audio and sheet sprites are **not** part of this license and are **not** shipped in GitHub Pages builds. For local playback of game samples, put files you are allowed to use in `public/notes/` (see that folder’s README). Empty folders fall back to synthesizers and drawn tiles.
+Growtopia audio and sheet sprites are **© Ubisoft**, used with permission, and are **not** part of the MIT license. If `public/notes/` or `public/tiles/` are empty, playback uses synthesizers and drawn tiles.

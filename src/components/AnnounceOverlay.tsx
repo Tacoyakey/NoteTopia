@@ -21,6 +21,7 @@ export function AnnounceOverlay() {
   const [open, setOpen] = useState(false)
   const heading = t(`announce.post.${current.post}.heading`)
   const items = tAll(`announce.post.${current.post}.items`)
+  const wip = tAll(`announce.post.${current.post}.wip`)
 
   const { chosen } = useStudioMode()
 
@@ -84,14 +85,30 @@ export function AnnounceOverlay() {
           <h3 id="announce-title">{t('announce.title')}</h3>
           <span className="announce-date">{current.date}</span>
         </div>
+        <div className="help-body">
         <p className="announce-heading">{heading}</p>
         {items.length > 0 ? (
-          <ul className="announce-list">
-            {items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <>
+            <h4 className="help-section-title">{t('announce.ready')}</h4>
+            <ul className="announce-list">
+              {items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </>
         ) : null}
+        {wip.length > 0 ? (
+          <>
+            <h4 className="help-section-title">{t('announce.wip')}</h4>
+            <ul className="announce-list">
+              {wip.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+        </div>
+        <div className="help-foot">
         <div className="announce-actions">
           <button type="button" className="btn-tool btn-tool-primary" onClick={hideForever}>
             {t('announce.dontShow')}
@@ -99,6 +116,7 @@ export function AnnounceOverlay() {
           <button type="button" className="btn-tool" onClick={hideThisSession}>
             {t('announce.close')}
           </button>
+        </div>
         </div>
       </div>
     </div>

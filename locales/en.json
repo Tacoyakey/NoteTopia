@@ -351,31 +351,47 @@
   "about": {
     "title": "About NoteTopia",
     "lead": "{name} by {author}. Write in a DAW, play it on a 14-lane sheet.",
-    "unofficial": "Unofficial. Not Ubisoft. Their game, names, and assets stay theirs.",
+    "unofficial": "Unofficial fan project. Not affiliated with, endorsed by, or sponsored by Ubisoft. Growtopia names and trademarks stay theirs. Sheet art and note samples are © Ubisoft, used with permission.",
     "creditsTitle": "Credits",
     "creditGrowtopia": "Sheet instruments —",
     "creditGtMusicSim": "Lanes, racks, .gtmusic —",
     "creditKixnoway": ".GMSF files —",
     "creditGmsf": "Original GMSF —",
-    "creditLocal": "Sprites & samples stay local —",
+    "creditSprites": "Sheet sprites —",
+    "creditDiscord": "Bugs, help, and ideas — Discord thisistaku",
     "wikiName": "Wiki",
     "warranty": "© {years} {author} · MIT · no warranty",
     "close": "Close"
   },
   "announce": {
-    "title": "What’s new",
-    "open": "What’s new",
+    "title": "Welcome",
+    "open": "Welcome",
     "dontShow": "Don’t show again",
     "close": "Close",
+    "ready": "What’s in",
+    "wip": "Still cooking",
     "post": {
-      "toolsPhone": {
-        "heading": "Tools, phone Composer, and other tracks",
+      "welcome": {
+        "heading": "NoteTopia is free to use for planning music. Write in the browser, then see it as a Growtopia-style 14-lane sheet. Alpha, unofficial, not Ubisoft. Need help, found a bug, or have a suggestion? Discord: thisistaku",
         "items": [
-          "Hover a tool to see its name.",
-          "World tools: Build is first, and the menu opens to the right.",
-          "On a phone, Composer opens on Arrange. Piano keys sit next to the grid.",
-          "Other tracks (G) shows notes from other instruments.",
-          "The volume bar keeps a fill at your level, with a peak tick when sound plays."
+          "World Mode: 14-lane pitch grid, place/break tiles, weather (sunny, stargazing, nothingness, solid color), follow-playhead, density, and zoom.",
+          "World tools: Build, select, draw, slice. Shift for sharps, Alt for flats. Right-click breaks tiles.",
+          "Composer: DAW arrange plus a piano roll, mute/solo/volume, snap, resizable or minimized panes.",
+          "Simple mode (sheet planner) and Studio mode (full DAW + World). Phone layout with Arrange-first Composer.",
+          "Instruments: piano, bass, drums, sax, flute, Spanish guitar, electric guitar, violin, lyre, trumpet, spooky, Winterfest — flats/sharps where the game has them.",
+          "Audio Racks for stacked notes, accidental (sharp/flat) layers, Repeat Begin/End packing.",
+          "Import MIDI, .gtmusic, and .GMSF. Drag-and-drop. MIDI convert: Basic, Preserve, or Adapt. Add extra MIDI as layers on the current song.",
+          "Export a mix to MP3 or WAV (mute/solo respected), plus .GMSF for kixnoway, .gtmusic, Lua blueprint, .notetopia, and MIDI out.",
+          "Other tracks (G) ghosts notes from other instruments. Master volume with a VU meter. Loop region on the ruler.",
+          "Autosave in the browser, undo/redo, copy/paste/select-all, Night Chorus demo on first launch.",
+          "Tutorials, 20 languages, Help (?), and shortcuts (Space play, Tab modes, arrows, Ctrl+Z/C/V/A)."
+        ],
+        "wip": [
+          "Adapt convert is still experimental — Basic and Preserve are the stable ones.",
+          "More phone polish, smarter MIDI convert, and extra convert options.",
+          "Source stays private for now — not open source yet.",
+          "A shorter custom domain if/when I grab one.",
+          "Whatever else people yell at me about on Discord."
         ]
       }
     }

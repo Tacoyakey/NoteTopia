@@ -42,6 +42,7 @@ export function AboutOverlay() {
           <h3 id="about-title">{t('about.title')}</h3>
           <span className="about-stage">{APP_STAGE}</span>
         </div>
+        <div className="help-body">
         <p className="help-lead">{t('about.lead', { name: APP_NAME, author: APP_AUTHOR })}</p>
         <p className="about-copy">{t('about.unofficial')}</p>
 
@@ -67,15 +68,18 @@ export function AboutOverlay() {
             {t('about.creditGmsf')} MyLegGuy, HonestyCow, D.RS, Bonk
           </li>
           <li>
-            {t('about.creditLocal')}{' '}
+            {t('about.creditSprites')}{' '}
             <Ext href={ABOUT_LINKS.wiki}>{t('about.wikiName')}</Ext>
           </li>
+          <li>{t('about.creditDiscord')}</li>
         </ul>
 
         <p className="about-copy about-warranty">
           {t('about.warranty', { years: APP_YEARS, author: APP_AUTHOR })}
         </p>
+        </div>
 
+        <div className="help-foot">
         <div className="announce-actions">
           <button
             type="button"
@@ -90,6 +94,7 @@ export function AboutOverlay() {
           <button type="button" className="btn-tool" onClick={() => setOpen(false)}>
             {t('about.close')}
           </button>
+        </div>
         </div>
       </div>
     </div>

@@ -330,13 +330,14 @@
   "about": {
     "title": "NoteTopia について",
     "lead": "{name}（{author}）。DAW で書いて、14レーンの楽譜で再生。",
-    "unofficial": "非公式。Ubisoft とは無関係。ゲーム・名称・素材の権利は権利者にあります。",
+    "unofficial": "非公式ファンプロジェクト。Ubisoft の公式・後援・提携ではありません。Growtopia の名称・商標は権利者にあります。シートアートとノートサンプルは © Ubisoft、使用許諾済みです。",
     "creditsTitle": "クレジット",
     "creditGrowtopia": "楽譜楽器 —",
     "creditGtMusicSim": "レーン、ラック、.gtmusic —",
     "creditKixnoway": ".GMSF ファイル —",
     "creditGmsf": "オリジナル GMSF —",
-    "creditLocal": "スプライトとサンプルはローカルのみ —",
+    "creditSprites": "シートスプライト —",
+    "creditDiscord": "バグ・ヘルプ・アイデア — Discord thisistaku",
     "wikiName": "Wiki",
     "warranty": "© {years} {author} · MIT · 無保証",
     "close": "閉じる"
