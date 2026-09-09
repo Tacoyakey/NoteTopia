@@ -175,7 +175,7 @@
       },
       "s2": {
         "title": "Bottom dock",
-        "body": "Select looks around and picks tiles. Build places and breaks them. Play sits in the middle. Help is the question mark."
+        "body": "Select looks around and picks tiles. Build places and breaks them. Play sits in the middle. Help is the question mark. Tap the active tab again to hide the BPM bar."
       },
       "s3": {
         "title": "Drag to look",
@@ -183,7 +183,7 @@
       },
       "s4": {
         "title": "Play",
-        "body": "The round button in the dock plays and pauses. BPM and extra tools sit in the floating bar above the dock."
+        "body": "The round button in the dock plays and pauses. BPM and extra tools sit in the floating bar above the dock. Tap the active Select, Build, or Composer tab to hide that bar; tap it or another tab to bring it back."
       },
       "s5": {
         "title": "Composer",
@@ -365,6 +365,8 @@
     "loopEndHint": "Drag to set loop end · Alt-click the ruler",
     "phoneDock": "Phone controls",
     "phoneFloat": "Playback and tools",
+    "hidePhoneFloat": "Hide BPM and tools",
+    "showPhoneFloat": "Show BPM and tools",
     "worldPanel": "Panel",
     "backToWorld": "Back to World"
   },

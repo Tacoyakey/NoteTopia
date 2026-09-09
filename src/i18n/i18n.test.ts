@@ -83,6 +83,7 @@ describe('i18n', () => {
     expect(t('tour.phone.title')).toContain('phone')
     expect(t('ui.newProjectDirty')).toContain('notes')
     expect(t('ui.collapseTracks')).toContain('icon')
+    expect(t('ui.hidePhoneFloat')).toContain('Hide')
   })
 
   it('lists twenty launch locales', () => {

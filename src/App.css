@@ -4647,6 +4647,10 @@ select:focus-visible,
   --phone-float-stack: 140px;
 }
 
+.app.is-phone:has(.phone-float-slot.is-min) {
+  --phone-float-stack: 24px;
+}
+
 .app.is-phone .toolbar {
   min-height: 48px;
   padding: 6px 10px;
@@ -4694,6 +4698,21 @@ select:focus-visible,
   align-self: center;
 }
 
+.phone-float-slot {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.32s var(--ease);
+}
+
+.phone-float-slot.is-min {
+  grid-template-rows: 0fr;
+}
+
+.phone-float-slot-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
 .phone-float {
   display: flex;
   flex-direction: column;
@@ -4704,6 +4723,17 @@ select:focus-visible,
   border-radius: 18px;
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    transform 0.32s var(--ease),
+    opacity 0.22s var(--ease);
+}
+
+.phone-float-slot.is-min .phone-float {
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .phone-float-info {

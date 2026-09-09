@@ -14,31 +14,40 @@ import { ComposerTools } from '../composer/ComposerTools'
 import { CursorToolMenu } from './CursorToolMenu'
 import { SnapSelect } from './SnapSelect'
 import { useStudioMode } from '../layout/useStudioMode'
+import { usePhoneFloatOpen } from '../layout/phoneFloat'
 
 export function PhoneFloatBar() {
   const { state } = useSong()
   const { t } = useT()
+  const open = usePhoneFloatOpen()
   const composer = state.mode === 'composer'
   const build = !composer && state.worldTool === 'build'
 
   return (
-    <div
-      className={`phone-float${build ? ' is-build' : ''}${composer ? ' is-composer' : ''}`}
-      role="region"
-      aria-label={t('ui.phoneFloat')}
-    >
-      <div className="phone-float-info">
-        <TransportLcd />
-        <MasterVolume />
-      </div>
-      <div className="phone-float-extras">
-        <div className="toolbar-edit-tools">
-          <CursorToolMenu drop="up" />
-          <ComposerTools />
+    <div className={`phone-float-slot${open ? '' : ' is-min'}`}>
+      <div className="phone-float-slot-inner">
+        <div
+          id="phone-float-bar"
+          className={`phone-float${build ? ' is-build' : ''}${composer ? ' is-composer' : ''}`}
+          role="region"
+          aria-label={t('ui.phoneFloat')}
+          aria-hidden={!open}
+          inert={!open}
+        >
+          <div className="phone-float-info">
+            <TransportLcd />
+            <MasterVolume />
+          </div>
+          <div className="phone-float-extras">
+            <div className="toolbar-edit-tools">
+              <CursorToolMenu drop="up" />
+              <ComposerTools />
+            </div>
+            {composer ? <PhoneComposerExtras /> : <PhoneWorldSnap />}
+          </div>
+          {build && <PhoneBuildStrip />}
         </div>
-        {composer ? <PhoneComposerExtras /> : <PhoneWorldSnap />}
       </div>
-      {build && <PhoneBuildStrip />}
     </div>
   )
 }
