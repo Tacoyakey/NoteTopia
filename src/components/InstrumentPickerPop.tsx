@@ -51,10 +51,12 @@ export function InstrumentPickerPop({
       const height = pop?.offsetHeight ?? 320
       let left = rect.left - width - 8
       if (left < 8) left = Math.min(window.innerWidth - width - 8, rect.right + 8)
+      left = Math.max(8, Math.min(left, window.innerWidth - width - 8))
       let top = rect.top
       if (top + height > window.innerHeight - 8) {
         top = Math.max(8, window.innerHeight - height - 8)
       }
+      top = Math.max(8, top)
       setPos({ top, left })
     }
     place()

@@ -1,6 +1,7 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { Check, ChevronDown } from './icons'
+import { placePopover } from '../dom/placePopover'
 
 export type AppMenuItem = { id: string; label: string; leading?: ReactNode }
 
@@ -35,24 +36,28 @@ export function AppMenu({
       const menu = menuRef.current
       if (!trigger) return
       const rect = trigger.getBoundingClientRect()
-      const mw = menu?.offsetWidth ?? 248
-      const mh = menu?.offsetHeight ?? 200
-      let left = align === 'right' ? rect.right - mw : rect.left
-      left = Math.max(8, Math.min(left, window.innerWidth - mw - 8))
-      let top = rect.bottom + 6
-      if (top + mh > window.innerHeight - 8) {
-        top = Math.max(8, rect.top - mh - 6)
-      }
-      setPos({ top, left })
+      setPos(
+        placePopover({
+          trigger: rect,
+          width: menu?.offsetWidth ?? 248,
+          height: menu?.offsetHeight ?? 200,
+          align,
+          drop: 'down',
+        }),
+      )
     }
     place()
     const frame = requestAnimationFrame(place)
     window.addEventListener('resize', place)
     window.addEventListener('scroll', place, true)
+    window.visualViewport?.addEventListener('resize', place)
+    window.visualViewport?.addEventListener('scroll', place)
     return () => {
       cancelAnimationFrame(frame)
       window.removeEventListener('resize', place)
       window.removeEventListener('scroll', place, true)
+      window.visualViewport?.removeEventListener('resize', place)
+      window.visualViewport?.removeEventListener('scroll', place)
     }
   }, [open, align, items.length, value])
 

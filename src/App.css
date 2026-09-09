@@ -1690,6 +1690,18 @@ button,
   animation: pop-in 0.18s var(--ease);
 }
 
+.tool-dropdown-menu.is-portal {
+  position: fixed;
+  right: auto;
+  bottom: auto;
+  z-index: 80;
+}
+
+.tool-dropdown-menu.is-portal.drops-up {
+  transform-origin: bottom left;
+  animation: pop-in-up 0.2s var(--ease);
+}
+
 .tool-dropdown.align-right .tool-dropdown-menu {
   left: auto;
   right: 0;
@@ -4673,6 +4685,7 @@ select:focus-visible,
   flex-direction: column;
   align-items: stretch;
   gap: 8px;
+  max-width: calc(100% - 16px);
   pointer-events: none;
 }
 
@@ -4693,6 +4706,8 @@ select:focus-visible,
 .phone-float-slot {
   display: grid;
   grid-template-rows: 1fr;
+  max-width: 100%;
+  min-width: 0;
   transition: grid-template-rows 0.32s var(--ease);
 }
 
@@ -4702,6 +4717,8 @@ select:focus-visible,
 
 .phone-float-slot-inner {
   min-height: 0;
+  min-width: 0;
+  max-width: 100%;
   overflow: visible;
   border-radius: 18px;
 }
@@ -4714,6 +4731,10 @@ select:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   padding: 8px;
   background: rgba(18, 18, 18, 0.94);
   background-clip: padding-box;
@@ -4738,6 +4759,7 @@ select:focus-visible,
   align-items: center;
   justify-content: center;
   gap: 8px;
+  width: 100%;
   min-width: 0;
 }
 
@@ -4780,9 +4802,9 @@ select:focus-visible,
 
 .phone-float .master-vol-track {
   width: auto;
-  flex: 1 1 auto;
-  min-width: 48px;
-  max-width: none;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .phone-float .master-vol-meter {
@@ -4834,7 +4856,11 @@ select:focus-visible,
   display: flex;
   align-items: stretch;
   gap: 6px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding-bottom: 2px;

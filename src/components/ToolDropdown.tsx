@@ -1,5 +1,7 @@
-import { useEffect, useId, useRef, useState, type ComponentType } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState, type ComponentType } from 'react'
+import { createPortal } from 'react-dom'
 import { Check, ChevronDown } from './icons'
+import { placePopover } from '../dom/placePopover'
 
 export type ToolDropdownItem<T extends string> = {
   id: T
@@ -27,14 +29,50 @@ export function ToolDropdown<T extends string>({
 }) {
   const [open, setOpen] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
+  const menuRef = useRef<HTMLUListElement>(null)
+  const [pos, setPos] = useState({ top: 0, left: 0 })
   const menuId = useId()
   const current = items.find((item) => item.id === value) ?? items[0]
   const Icon = current?.icon
 
+  useLayoutEffect(() => {
+    if (!open || !rootRef.current) return
+    const place = () => {
+      const trigger = rootRef.current
+      const menu = menuRef.current
+      if (!trigger) return
+      const rect = trigger.getBoundingClientRect()
+      setPos(
+        placePopover({
+          trigger: rect,
+          width: menu?.offsetWidth ?? 248,
+          height: menu?.offsetHeight ?? 200,
+          align,
+          drop,
+        }),
+      )
+    }
+    place()
+    const frame = requestAnimationFrame(place)
+    window.addEventListener('resize', place)
+    window.addEventListener('scroll', place, true)
+    window.visualViewport?.addEventListener('resize', place)
+    window.visualViewport?.addEventListener('scroll', place)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('resize', place)
+      window.removeEventListener('scroll', place, true)
+      window.visualViewport?.removeEventListener('resize', place)
+      window.visualViewport?.removeEventListener('scroll', place)
+    }
+  }, [open, align, drop, items.length, value])
+
   useEffect(() => {
     if (!open) return
     const onPointer = (e: PointerEvent) => {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false)
+      const target = e.target as Node
+      if (rootRef.current?.contains(target) || menuRef.current?.contains(target)) return
+      setOpen(false)
     }
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
@@ -68,35 +106,45 @@ export function ToolDropdown<T extends string>({
         {iconOnly ? null : <span className="tool-dropdown-label">{current.label}</span>}
         <ChevronDown size={12} className="tool-dropdown-chevron" />
       </button>
-      {open ? (
-        <ul id={menuId} className="tool-dropdown-menu" role="listbox" aria-label={label}>
-          {items.map((item) => {
-            const ItemIcon = item.icon
-            const selected = item.id === value
-            return (
-              <li key={item.id} role="none">
-                <button
-                  type="button"
-                  role="option"
-                  aria-selected={selected}
-                  className={selected ? 'is-selected' : undefined}
-                  title={item.title}
-                  onClick={() => {
-                    onChange(item.id)
-                    setOpen(false)
-                  }}
-                >
-                  <span className="tool-dropdown-check" aria-hidden>
-                    {selected ? <Check size={12} /> : null}
-                  </span>
-                  <ItemIcon size={15} />
-                  <span>{item.label}</span>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-      ) : null}
+      {open
+        ? createPortal(
+            <ul
+              ref={menuRef}
+              id={menuId}
+              className={`tool-dropdown-menu is-portal${drop === 'up' ? ' drops-up' : ''}`}
+              role="listbox"
+              aria-label={label}
+              style={{ top: pos.top, left: pos.left }}
+            >
+              {items.map((item) => {
+                const ItemIcon = item.icon
+                const selected = item.id === value
+                return (
+                  <li key={item.id} role="none">
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={selected}
+                      className={selected ? 'is-selected' : undefined}
+                      title={item.title}
+                      onClick={() => {
+                        onChange(item.id)
+                        setOpen(false)
+                      }}
+                    >
+                      <span className="tool-dropdown-check" aria-hidden>
+                        {selected ? <Check size={12} /> : null}
+                      </span>
+                      <ItemIcon size={15} />
+                      <span>{item.label}</span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>,
+            document.body,
+          )
+        : null}
     </div>
   )
 }
