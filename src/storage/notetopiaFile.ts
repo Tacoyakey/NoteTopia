@@ -114,7 +114,8 @@ export function downloadNotetopiaFile(project: {
   worldSettings: WorldSettings
 }): void {
   const bytes = encodeNotetopiaFile(project)
-  const blob = new Blob([bytes], { type: NOTETOPIA_MIME })
+  const copy = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer
+  const blob = new Blob([copy], { type: NOTETOPIA_MIME })
   downloadBlob(blob, `${safeDownloadName(project.song.name)}${NOTETOPIA_EXTENSION}`)
 }
 

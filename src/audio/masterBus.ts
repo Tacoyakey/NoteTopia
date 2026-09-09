@@ -25,7 +25,7 @@ let holdL = 0
 let holdUntilL = 0
 let lastReadAt = 0
 
-const wave = new Float32Array(FFT)
+const wave = new Float32Array(new ArrayBuffer(FFT * Float32Array.BYTES_PER_ELEMENT))
 
 function loadVolume(): number {
   try {
@@ -50,7 +50,7 @@ export function meterFromAmplitude(peak: number): number {
   return clamp01((db - FLOOR_DB) / -FLOOR_DB)
 }
 
-function peakFrom(node: AnalyserNode, buf: Float32Array): number {
+function peakFrom(node: AnalyserNode, buf: Float32Array<ArrayBuffer>): number {
   node.getFloatTimeDomainData(buf)
   let peak = 0
   for (let i = 0; i < buf.length; i++) {
