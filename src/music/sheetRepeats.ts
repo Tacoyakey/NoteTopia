@@ -211,32 +211,60 @@ export function findRepeatedSection(
   }
 
   const idAt = (col: number) => (col < 0 || col >= nSound ? 0 : ids[col])
-  const equal = (a: number, b: number, len: number) => {
-    for (let i = 0; i < len; i++) {
-      if (idAt(a + i) !== idAt(b + i)) return false
+
+  const repeatMark = new Array<number>(nSound).fill(0)
+  for (const track of song.tracks) {
+    for (const note of track.notes) {
+      if (!isRepeatNote(note)) continue
+      const col = noteColumn(note)
+      if (col >= 0 && col < nSound) repeatMark[col] = 1
     }
-    return true
+  }
+  const repeatPref = new Array<number>(nSound + 1)
+  repeatPref[0] = 0
+  for (let c = 0; c < nSound; c++) repeatPref[c + 1] = repeatPref[c] + repeatMark[c]
+
+  const soundPref = new Array<number>(nSound + 1)
+  soundPref[0] = 0
+  for (let c = 0; c < nSound; c++) {
+    soundPref[c + 1] = soundPref[c] + (ids[c] !== 0 ? 1 : 0)
+  }
+
+  const rangeHasRepeatFast = (start: number, len: number) => {
+    const a = Math.max(0, start)
+    const b = Math.min(nSound, start + len)
+    return a < b && repeatPref[b] - repeatPref[a] > 0
   }
   const hasSound = (start: number, len: number) => {
-    for (let i = 0; i < len; i++) {
-      const col = start + i
-      if (col >= 0 && col <= last && idAt(col) !== 0) return true
-    }
-    return false
+    const a = Math.max(0, start)
+    const b = Math.min(nSound, start + len)
+    return a < b && soundPref[b] - soundPref[a] > 0
   }
 
   let best: { start: number; period: number; times: number; saved: number } | null = null
   const maxPeriod = Math.floor((last + 1 + MIN_PERIOD_COLS) / 2)
 
   for (let period = MIN_PERIOD_COLS; period <= maxPeriod; period++) {
+    const matchLen = nSound + period
+    const mp = new Array<number>(matchLen + 1)
+    mp[0] = 0
+    for (let i = 0; i < matchLen; i++) {
+      mp[i + 1] = mp[i] + (idAt(i) === idAt(i + period) ? 1 : 0)
+    }
+    const copiesEqual = (start: number, hops: number) => {
+      const end = start + hops * period
+      if (start < 0 || end > matchLen) return false
+      return mp[end] - mp[start] === hops * period
+    }
+
     for (let start = 0; start + period <= last; start++) {
       if (skip.has(`${start}:${period}`)) continue
       if (idAt(start) === 0) continue
-      if (rangeHasRepeat(song, start, period)) continue
+      if (rangeHasRepeatFast(start, period)) continue
       if (!hasSound(start, period) || !hasSound(start + period, period)) continue
-      if (!equal(start, start + period, period)) continue
+      if (!copiesEqual(start, 1)) continue
       let times = 2
-      while (hasSound(start + times * period, period) && equal(start, start + times * period, period)) {
+      while (hasSound(start + times * period, period) && copiesEqual(start, times)) {
         times++
       }
       const saved = (times - 1) * period

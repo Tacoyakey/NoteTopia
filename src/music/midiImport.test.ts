@@ -36,7 +36,7 @@ describe('MIDI import', () => {
     expect(leadPitch).toBeLessThanOrEqual(71)
   })
 
-  it('maps GM program 48 (strings) to violin', async () => {
+  it('maps GM program 48 (string ensemble) to piano so pads do not steal violin', async () => {
     const file = midiFile((midi) => {
       const strings = midi.addTrack()
       strings.channel = 0
@@ -44,8 +44,20 @@ describe('MIDI import', () => {
       strings.addNote({ midi: 67, ticks: 0, durationTicks: midi.header.ppq, velocity: 0.7 })
     })
     const { song, summary } = await importMidiFile(file)
-    expect(song.tracks[0]?.instrument).toBe('violin')
+    expect(song.tracks[0]?.instrument).toBe('piano')
     expect(song.tracks[0]?.gmProgram).toBe(48)
     expect(summary.tempoChanges).toBeGreaterThanOrEqual(1)
+  })
+
+  it('maps GM program 40 (violin) to violin', async () => {
+    const file = midiFile((midi) => {
+      const violin = midi.addTrack()
+      violin.channel = 0
+      violin.instrument.number = 40
+      violin.addNote({ midi: 67, ticks: 0, durationTicks: midi.header.ppq, velocity: 0.7 })
+    })
+    const { song } = await importMidiFile(file)
+    expect(song.tracks[0]?.instrument).toBe('violin')
+    expect(song.tracks[0]?.gmProgram).toBe(40)
   })
 })
