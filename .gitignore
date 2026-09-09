@@ -27,9 +27,9 @@ dist-ssr
 _reference/
 
 # Local Growtopia audio / sheet sprites (do not commit or redistribute)
-public/notes/*.wav
-public/notes/*.ogg
-public/notes/*.mp3
-!public/notes/README.md
-public/tiles/*.png
-!public/tiles/README.md
+# public/notes/*.wav
+# public/notes/*.ogg
+# public/notes/*.mp3
+# !public/notes/README.md
+# public/tiles/*.png
+# !public/tiles/README.md
