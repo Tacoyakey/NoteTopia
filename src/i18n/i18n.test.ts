@@ -24,7 +24,7 @@ describe('i18n', () => {
   it('has About copy that disclaims Ubisoft affiliation', () => {
     expect(t('about.unofficial')).toMatch(/unofficial/i)
     expect(t('about.unofficial')).toContain('Ubisoft')
-    expect(t('about.unofficial')).toMatch(/permission/i)
+    expect(t('about.unofficial')).not.toMatch(/permission/i)
     expect(t('ui.about')).toBe('About')
   })
 
@@ -86,9 +86,10 @@ describe('i18n', () => {
     expect(t('ui.hidePhoneFloat')).toContain('Hide')
   })
 
-  it('lists twenty launch locales', () => {
+  it('lists launch locales and tucks Ratglish at the end', () => {
     const codes = listLocales().map((item) => item.code)
-    expect(codes).toHaveLength(20)
+    expect(codes).toHaveLength(21)
+    expect(codes[codes.length - 1]).toBe('rat')
     expect(codes).toEqual(
       expect.arrayContaining([
         'en',
@@ -128,6 +129,10 @@ describe('i18n', () => {
     expect(t('ui.language')).toBe('اللغة')
     applyLocale('ko')
     expect(t('ui.language')).toBe('언어')
+    applyLocale('rat')
+    expect(t('ui.language')).toBe('Squeaklect')
+    expect(t('ui.composer')).toBe('Squeakposer')
+    expect(t('ui.world')).toBe('Burrow')
     applyLocale('en')
   })
 
@@ -135,6 +140,7 @@ describe('i18n', () => {
     expect(localeFlagIso('ja')).toBe('jp')
     expect(localeFlagIso('en')).toBe('us')
     expect(localeFlagIso('fil')).toBe('ph')
+    expect(localeFlagIso('rat')).toBe('rat')
     expect(localeFlagIso('xx')).toBe('un')
   })
 })

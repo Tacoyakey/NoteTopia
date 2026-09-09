@@ -1,4 +1,4 @@
-/** ISO 3166-1 alpha-2 used for round flag icons. Language ≠ country; these are conventional UI picks. */
+/** ISO 3166-1 alpha-2 used for round flag icons. `rat` is the Ratglish easter egg. */
 const LOCALE_FLAG_ISO: Record<string, string> = {
   ar: 'sa',
   de: 'de',
@@ -15,6 +15,7 @@ const LOCALE_FLAG_ISO: Record<string, string> = {
   nl: 'nl',
   pl: 'pl',
   pt: 'br',
+  rat: 'rat',
   ru: 'ru',
   th: 'th',
   tr: 'tr',

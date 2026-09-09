@@ -3091,14 +3091,6 @@ button,
   outline-offset: 2px;
 }
 
-.setting-bento-tile.is-wide {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  min-height: 44px;
-  gap: 8px;
-}
-
 .setting-row .app-menu {
   flex: 1 1 0;
   min-width: 0;
@@ -4710,6 +4702,11 @@ select:focus-visible,
 
 .phone-float-slot-inner {
   min-height: 0;
+  overflow: visible;
+  border-radius: 18px;
+}
+
+.phone-float-slot.is-min .phone-float-slot-inner {
   overflow: hidden;
 }
 
@@ -4718,10 +4715,10 @@ select:focus-visible,
   flex-direction: column;
   gap: 8px;
   padding: 8px;
-  background: rgba(18, 18, 18, 0.92);
-  border: 1px solid var(--border);
+  background: rgba(18, 18, 18, 0.94);
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  backdrop-filter: blur(12px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   transform: translateY(0);
   opacity: 1;

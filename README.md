@@ -76,4 +76,4 @@ Help, buttons, and instructions live in JSON files under [`locales/`](locales/RE
 
 Original NoteTopia code is [MIT](LICENSE). Third-party notices, Growtopia/Ubisoft disclaimers, and library credits: [CREDITS.md](CREDITS.md).
 
-Growtopia audio and sheet sprites are **© Ubisoft**, used with permission, and are **not** part of the MIT license. If `public/notes/` or `public/tiles/` are empty, playback uses synthesizers and drawn tiles.
+Growtopia audio and sheet sprites are **© Ubisoft** and are **not** part of the MIT license. If `public/notes/` or `public/tiles/` are empty, playback uses synthesizers and drawn tiles.

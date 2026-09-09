@@ -75,14 +75,19 @@ export function convertText(id: string, field: 'label' | 'description' | 'hint')
 export function listLocales(): { code: string; name: string; nativeName: string }[] {
   return [...catalogs.entries()]
     .map(([code, data]) => {
-      const meta = data.meta as { name?: string; nativeName?: string } | undefined
+      const meta = data.meta as { name?: string; nativeName?: string; easterEgg?: boolean } | undefined
       return {
         code,
         name: meta?.name || code,
         nativeName: meta?.nativeName || meta?.name || code,
+        easterEgg: Boolean(meta?.easterEgg),
       }
     })
-    .sort((a, b) => a.nativeName.localeCompare(b.nativeName))
+    .sort((a, b) => {
+      if (a.easterEgg !== b.easterEgg) return a.easterEgg ? 1 : -1
+      return a.nativeName.localeCompare(b.nativeName)
+    })
+    .map(({ easterEgg: _egg, ...item }) => item)
 }
 
 const LOCALE_ALIASES: Record<string, string> = {

@@ -19,7 +19,7 @@ import { InstrumentPickerPop } from './InstrumentPickerPop'
 import { AppMenu } from './AppMenu'
 import { SnapSelect } from './SnapSelect'
 import { WarnNote } from './WarnNote'
-import { AudioLines, ChevronDown, Eye, Layers, LayoutGrid, Piano } from './icons'
+import { AudioLines, ChevronDown, Eye, Layers, LayoutGrid } from './icons'
 import { useT } from '../i18n/LanguageProvider'
 import { useStudioMode } from '../layout/useStudioMode'
 import { tf } from '../i18n/i18n'
@@ -272,19 +272,17 @@ function SettingBentoTile({
   label,
   icon,
   onClick,
-  wide,
 }: {
   pressed?: boolean
   title: string
   label: string
   icon: ReactNode
   onClick: () => void
-  wide?: boolean
 }) {
   return (
     <button
       type="button"
-      className={`setting-bento-tile${pressed ? ' is-on' : ''}${wide ? ' is-wide' : ''}`}
+      className={`setting-bento-tile${pressed ? ' is-on' : ''}`}
       aria-pressed={pressed == null ? undefined : pressed}
       title={title}
       onClick={onClick}
@@ -304,7 +302,6 @@ export function WorldSettingsPanel({
 }) {
   const { state, dispatch, pushHistory } = useSong()
   const { t } = useT()
-  const { simple } = useStudioMode()
   const ws = state.worldSettings
   const weatherId = getWeather(ws.theme).id
 
@@ -438,7 +435,6 @@ export function WorldSettingsPanel({
           title={t('ui.samplesHint')}
           label={t('ui.samples')}
           icon={<AudioLines size={16} />}
-          wide={simple}
           onClick={() =>
             dispatch({
               type: 'SET_WORLD_SETTINGS',
@@ -446,25 +442,10 @@ export function WorldSettingsPanel({
             })
           }
         />
-        {simple ? null : (
-          <SettingBentoTile
-            pressed={ws.composerFollowPlayhead !== false}
-            title={t('ui.composerFollowHint')}
-            label={t('ui.composerFollow')}
-            icon={<Piano size={16} />}
-            onClick={() =>
-              dispatch({
-                type: 'SET_WORLD_SETTINGS',
-                settings: { composerFollowPlayhead: !(ws.composerFollowPlayhead !== false) },
-              })
-            }
-          />
-        )}
         <SettingBentoTile
           title={t('ui.packToRacksHint')}
           label={t('ui.packToRacks')}
           icon={<Layers size={16} />}
-          wide
           onClick={() => {
             pushHistory()
             const packed = packSongToRacks(state.song, state.worldSettings.convertModel)

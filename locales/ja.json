@@ -366,7 +366,7 @@
   "about": {
     "title": "NoteTopia について",
     "lead": "{name}（{author}）。DAW で書いて、14レーンの楽譜で再生。",
-    "unofficial": "非公式ファンプロジェクト。Ubisoft の公式・後援・提携ではありません。Growtopia の名称・商標は権利者にあります。シートアートとノートサンプルは © Ubisoft、使用許諾済みです。",
+    "unofficial": "非公式ファンプロジェクト。Ubisoft の公式・後援・提携ではありません。Growtopia の名称・商標は権利者にあります。シートアートとノートサンプルは © Ubisoft です。",
     "creditsTitle": "クレジット",
     "creditGrowtopia": "楽譜楽器 —",
     "creditGtMusicSim": "レーン、ラック、.gtmusic —",

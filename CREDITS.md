@@ -11,7 +11,7 @@ NoteTopia is an unofficial fan project by **Takuya**. It is **not** affiliated w
 
 Growtopia, Growtopia item names, sheet-music block art, and note samples are **© Ubisoft** (or their respective owners). All rights reserved.
 
-NoteTopia does **not** claim ownership of those assets. Sheet art and note samples are used **with permission from Ubisoft**. Fallback synthesizers and drawn tiles still run if files are missing.
+NoteTopia does **not** claim ownership of those assets. Fallback synthesizers and drawn tiles still run if files are missing.
 
 ## GMSF / kixnoway.com
 
