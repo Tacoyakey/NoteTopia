@@ -3351,6 +3351,26 @@ button,
   animation: pop-in 0.2s var(--ease);
 }
 
+.help-panel:has(.help-body) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.help-foot {
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-top: 4px;
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border);
+}
+
 .help-panel h3 {
   margin: 0;
   font-size: 20px;
@@ -3365,6 +3385,7 @@ button,
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
+  flex-shrink: 0;
 }
 
 .lang-select {
@@ -3427,6 +3448,7 @@ button,
   margin-bottom: 16px;
   line-height: 1.55;
   text-align: left;
+  flex-shrink: 0;
 }
 
 .help-credit {
@@ -3436,7 +3458,7 @@ button,
   align-items: center;
   font-size: 12px;
   color: var(--text-muted);
-  margin: -8px 0 16px;
+  margin: 0 0 4px;
 }
 
 .help-credit-btn {
@@ -3653,7 +3675,7 @@ button,
 
 .help-panel .btn-tool {
   display: inline-flex;
-  margin: 16px 0 0;
+  margin: 8px 0 0;
   width: auto;
   font-size: 13px;
   padding: 8px 20px;

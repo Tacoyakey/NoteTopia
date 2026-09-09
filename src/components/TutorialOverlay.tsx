@@ -3,6 +3,7 @@ import { useSong } from '../context/SongContext'
 import { useStudioMode } from '../layout/useStudioMode'
 import { useT } from '../i18n/LanguageProvider'
 import { isTypingTarget } from '../dom/focus'
+import { markStartTourSeen } from '../tutorial/firstRun'
 import { tourById, visibleTourSteps, type TourDef, type TourId, type TourStep } from '../tutorial/tours'
 
 const OPEN_EVENT = 'notetopia-open-tutorial'
@@ -61,10 +62,11 @@ export function TutorialOverlay() {
 
   const close = useCallback(() => {
     window.dispatchEvent(new Event('notetopia-close-export-menu'))
+    if (tour?.id === 'start') markStartTourSeen()
     setTour(null)
     setIndex(0)
     setHole(null)
-  }, [])
+  }, [tour?.id])
 
   useEffect(() => {
     const open = (e: Event) => {

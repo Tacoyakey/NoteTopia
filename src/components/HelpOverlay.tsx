@@ -140,6 +140,7 @@ export function HelpOverlay() {
           <LanguageSelect />
         </div>
         <p className="help-lead">{simple ? t('intro.simpleLead') : t('help.lead')}</p>
+        <div className="help-body">
         <h4 className="help-section-title">{t('tour.title')}</h4>
         <div className="tour-picks">
           {(['start', 'midi', 'sheet'] as const).map((id) => (
@@ -162,28 +163,6 @@ export function HelpOverlay() {
             </button>
           ))}
         </div>
-        <p className="help-credit">
-          <button
-            type="button"
-            className="help-credit-btn"
-            onClick={() => {
-              setOpen(false)
-              window.dispatchEvent(new Event('notetopia-open-about'))
-            }}
-          >
-            {APP_CREDIT} · {t('help.about')}
-          </button>
-          <button
-            type="button"
-            className="help-credit-btn"
-            onClick={() => {
-              setOpen(false)
-              window.dispatchEvent(new Event('notetopia-open-announce'))
-            }}
-          >
-            {t('announce.open')}
-          </button>
-        </p>
 
         <HelpFold title={t('help.shortcutsTitle')}>
         <dl className="help-dl">
@@ -328,10 +307,35 @@ export function HelpOverlay() {
           <Row keys={t('help.feature.export.title')}>{t('help.feature.export.body')}</Row>
         </dl>
         </HelpFold>
+        </div>
 
-        <button type="button" className="btn-tool" onClick={() => setOpen(false)}>
-          {t('help.close')}
-        </button>
+        <div className="help-foot">
+          <p className="help-credit">
+            <button
+              type="button"
+              className="help-credit-btn"
+              onClick={() => {
+                setOpen(false)
+                window.dispatchEvent(new Event('notetopia-open-about'))
+              }}
+            >
+              {APP_CREDIT} · {t('help.about')}
+            </button>
+            <button
+              type="button"
+              className="help-credit-btn"
+              onClick={() => {
+                setOpen(false)
+                window.dispatchEvent(new Event('notetopia-open-announce'))
+              }}
+            >
+              {t('announce.open')}
+            </button>
+          </p>
+          <button type="button" className="btn-tool" onClick={() => setOpen(false)}>
+            {t('help.close')}
+          </button>
+        </div>
       </div>
     </div>
   )

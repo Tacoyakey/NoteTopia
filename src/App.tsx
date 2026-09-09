@@ -8,6 +8,7 @@ import { AnnounceOverlay } from './components/AnnounceOverlay'
 import { HelpOverlay } from './components/HelpOverlay'
 import { AboutOverlay } from './components/AboutOverlay'
 import { TutorialOverlay } from './components/TutorialOverlay'
+import { startPrimaryTour } from './tutorial/firstRun'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { ArrangeView } from './composer/ArrangeView'
 import { PianoRoll } from './composer/PianoRoll'
@@ -579,10 +580,14 @@ function AppContent() {
       {studio.picking ? (
         <IntroOverlay
           onChoose={(mode) => {
+            const firstRun = !studio.chosen
             studio.setMode(mode)
             if (mode === 'simple') {
               dispatch({ type: 'SET_MODE', mode: 'world' })
               dispatch({ type: 'SET_WORLD_TOOL', tool: 'build' })
+            }
+            if (firstRun) {
+              window.setTimeout(() => startPrimaryTour(), 400)
             }
           }}
         />
