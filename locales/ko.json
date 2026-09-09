@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "ko",
+    "name": "Korean",
+    "nativeName": "한국어"
+  },
+  "ui": {
+    "language": "언어"
+  },
+  "intro": {
+    "title": "{name}에 오신 것을 환영합니다",
+    "lead": "어떻게 쓰고 싶으세요? 나중에 파일에서 바꿀 수 있습니다.",
+    "simpleName": "심플",
+    "simpleLead": "Growtopia 시트만 — 플래너처럼.",
+    "simpleBody": "타일을 놓고 악기·MIDI 레이어를 더한 뒤 내보냅니다. 피아노 롤은 없습니다.",
+    "studioName": "스튜디오",
+    "studioLead": "전체 DAW와 World 시트.",
+    "studioBody": "Arrange와 피아노 롤로 편집하고, World에서 Growtopia 보기를 씁니다.",
+    "later": "파일 → 앱 모드에서 언제든 바꿀 수 있습니다.",
+    "change": "앱 모드",
+    "simpleHint": "각 악기가 레이어입니다. + 레이어 또는 MIDI 레이어 추가로 파트를 넣으세요.",
+    "addLayer": "+ 레이어"
+  },
+  "announce": {
+    "title": "새로운 소식",
+    "open": "새로운 소식",
+    "dontShow": "다시 보지 않기",
+    "close": "닫기"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "tr",
+    "name": "Turkish",
+    "nativeName": "Türkçe"
+  },
+  "ui": {
+    "language": "Dil"
+  },
+  "intro": {
+    "title": "{name}’e hoş geldiniz",
+    "lead": "Nasıl yazmak istersiniz? Sonra Dosya’dan değiştirebilirsiniz.",
+    "simpleName": "Basit",
+    "simpleLead": "Yalnızca Growtopia sayfası — bir planlayıcı gibi.",
+    "simpleBody": "Karoları yerleştirin, enstrüman ve MIDI katmanları ekleyin, dışa aktarın. Piyano rulo yok.",
+    "studioName": "Stüdyo",
+    "studioLead": "Tam DAW artı World sayfası.",
+    "studioBody": "Düzenlemek için Arrange ve piyano rulo; Growtopia görünümü için World.",
+    "later": "Dosya → Uygulama modu ile değişir.",
+    "change": "Uygulama modu",
+    "simpleHint": "Her enstrüman bir katmandır. + Katman veya MIDI katmanları ekleyin.",
+    "addLayer": "+ Katman"
+  },
+  "announce": {
+    "title": "Yenilikler",
+    "open": "Yenilikler",
+    "dontShow": "Bir daha gösterme",
+    "close": "Kapat"
+  }
+}

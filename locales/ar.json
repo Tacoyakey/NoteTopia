@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "ar",
+    "name": "Arabic",
+    "nativeName": "العربية"
+  },
+  "ui": {
+    "language": "اللغة"
+  },
+  "intro": {
+    "title": "مرحبًا في {name}",
+    "lead": "كيف تريد الكتابة؟ يمكنك التغيير لاحقًا من ملف.",
+    "simpleName": "بسيط",
+    "simpleLead": "ورقة Growtopia فقط — مثل المخطِّط.",
+    "simpleBody": "ضع البلاطات وأضف طبقات الآلات وMIDI ثم صدّر. بدون بيانو رول.",
+    "studioName": "ستوديو",
+    "studioLead": "محطة عمل كاملة مع ورقة World.",
+    "studioBody": "Arrange والبيانو رول للتحرير، وWorld لعرض Growtopia.",
+    "later": "التغيير من ملف ← وضع التطبيق.",
+    "change": "وضع التطبيق",
+    "simpleHint": "كل آلة طبقة. استخدم + طبقة أو طبقات MIDI.",
+    "addLayer": "+ طبقة"
+  },
+  "announce": {
+    "title": "ما الجديد",
+    "open": "ما الجديد",
+    "dontShow": "لا تظهر مرة أخرى",
+    "close": "إغلاق"
+  }
+}

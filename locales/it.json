@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "it",
+    "name": "Italian",
+    "nativeName": "Italiano"
+  },
+  "ui": {
+    "language": "Lingua"
+  },
+  "intro": {
+    "title": "Benvenuto in {name}",
+    "lead": "Come vuoi scrivere? Puoi cambiare dopo da File.",
+    "simpleName": "Semplice",
+    "simpleLead": "Solo lo spartito Growtopia — come un planner.",
+    "simpleBody": "Piazza tessere, aggiungi layer di strumenti e MIDI, poi esporta. Niente piano roll.",
+    "studioName": "Studio",
+    "studioLead": "DAW completo più il foglio World.",
+    "studioBody": "Arrange e piano roll per modificare, World per la vista Growtopia.",
+    "later": "Modificabile in File → Modalità app.",
+    "change": "Modalità app",
+    "simpleHint": "Ogni strumento è un layer. Usa + Layer o Aggiungi layer MIDI.",
+    "addLayer": "+ Layer"
+  },
+  "announce": {
+    "title": "Novità",
+    "open": "Novità",
+    "dontShow": "Non mostrare più",
+    "close": "Chiudi"
+  }
+}

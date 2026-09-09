@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "fr",
+    "name": "French",
+    "nativeName": "Français"
+  },
+  "ui": {
+    "language": "Langue"
+  },
+  "intro": {
+    "title": "Bienvenue sur {name}",
+    "lead": "Comment voulez-vous écrire ? Vous pourrez changer plus tard dans Fichier.",
+    "simpleName": "Simple",
+    "simpleLead": "Juste la partition Growtopia — comme un planificateur.",
+    "simpleBody": "Placez des tuiles, ajoutez des calques d’instruments et du MIDI, puis exportez. Pas de piano roll.",
+    "studioName": "Studio",
+    "studioLead": "DAW complet plus la feuille World.",
+    "studioBody": "Arrange et piano roll pour éditer, World pour la vue Growtopia.",
+    "later": "Modifiable dans Fichier → Mode de l’app.",
+    "change": "Mode de l’app",
+    "simpleHint": "Chaque instrument est un calque. Utilisez + Calque ou Ajouter des calques MIDI.",
+    "addLayer": "+ Calque"
+  },
+  "announce": {
+    "title": "Nouveautés",
+    "open": "Nouveautés",
+    "dontShow": "Ne plus afficher",
+    "close": "Fermer"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "pt",
+    "name": "Portuguese",
+    "nativeName": "Português"
+  },
+  "ui": {
+    "language": "Idioma"
+  },
+  "intro": {
+    "title": "Bem-vindo ao {name}",
+    "lead": "Como quer escrever? Pode mudar depois em Arquivo.",
+    "simpleName": "Simples",
+    "simpleLead": "Só a partitura Growtopia — como um planejador.",
+    "simpleBody": "Coloque tiles, adicione camadas de instrumentos e MIDI, depois exporte. Sem piano roll.",
+    "studioName": "Estúdio",
+    "studioLead": "DAW completo mais a folha World.",
+    "studioBody": "Arrange e piano roll para editar; World para a vista Growtopia.",
+    "later": "Pode mudar em Arquivo → Modo do app.",
+    "change": "Modo do app",
+    "simpleHint": "Cada instrumento é uma camada. Use + Camada ou Adicionar camadas MIDI.",
+    "addLayer": "+ Camada"
+  },
+  "announce": {
+    "title": "Novidades",
+    "open": "Novidades",
+    "dontShow": "Não mostrar de novo",
+    "close": "Fechar"
+  }
+}

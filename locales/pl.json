@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "pl",
+    "name": "Polish",
+    "nativeName": "Polski"
+  },
+  "ui": {
+    "language": "Język"
+  },
+  "intro": {
+    "title": "Witamy w {name}",
+    "lead": "Jak chcesz pisać? Później zmienisz to w Plik.",
+    "simpleName": "Prosty",
+    "simpleLead": "Tylko siatka Growtopia — jak planer.",
+    "simpleBody": "Kładź kafelki, dodawaj warstwy instrumentów i MIDI, potem eksport. Bez piano rolla.",
+    "studioName": "Studio",
+    "studioLead": "Pełny DAW plus arkusz World.",
+    "studioBody": "Arrange i piano roll do edycji, World do widoku Growtopia.",
+    "later": "Zmiana w Plik → Tryb aplikacji.",
+    "change": "Tryb aplikacji",
+    "simpleHint": "Każdy instrument to warstwa. + Warstwa lub warstwy MIDI.",
+    "addLayer": "+ Warstwa"
+  },
+  "announce": {
+    "title": "Co nowego",
+    "open": "Co nowego",
+    "dontShow": "Nie pokazuj ponownie",
+    "close": "Zamknij"
+  }
+}

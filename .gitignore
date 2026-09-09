@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local Growtopia audio / sheet sprites (do not commit or redistribute)
+public/notes/*.wav
+public/notes/*.ogg
+public/notes/*.mp3
+!public/notes/README.md
+public/tiles/*.png
+!public/tiles/README.md

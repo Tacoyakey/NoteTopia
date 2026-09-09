@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "nl",
+    "name": "Dutch",
+    "nativeName": "Nederlands"
+  },
+  "ui": {
+    "language": "Taal"
+  },
+  "intro": {
+    "title": "Welkom bij {name}",
+    "lead": "Hoe wil je schrijven? Later te wijzigen via Bestand.",
+    "simpleName": "Eenvoudig",
+    "simpleLead": "Alleen het Growtopia-blad — als een planner.",
+    "simpleBody": "Tegels plaatsen, instrument- en MIDI-lagen toevoegen, dan exporteren. Geen piano roll.",
+    "studioName": "Studio",
+    "studioLead": "Volledige DAW plus het World-blad.",
+    "studioBody": "Arrange en piano roll om te bewerken, World voor de Growtopia-weergave.",
+    "later": "Wijzig via Bestand → App-modus.",
+    "change": "App-modus",
+    "simpleHint": "Elk instrument is een laag. Gebruik + Laag of MIDI-lagen.",
+    "addLayer": "+ Laag"
+  },
+  "announce": {
+    "title": "Wat is nieuw",
+    "open": "Wat is nieuw",
+    "dontShow": "Niet meer tonen",
+    "close": "Sluiten"
+  }
+}

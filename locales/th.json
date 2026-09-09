@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "th",
+    "name": "Thai",
+    "nativeName": "ไทย"
+  },
+  "ui": {
+    "language": "ภาษา"
+  },
+  "intro": {
+    "title": "ยินดีต้อนรับสู่ {name}",
+    "lead": "อยากเขียนแบบไหน? เปลี่ยนทีหลังได้ที่ ไฟล์",
+    "simpleName": "ง่าย",
+    "simpleLead": "แค่ชีต Growtopia — เหมือนแพลนเนอร์",
+    "simpleBody": "วางไทล์ เพิ่มเลเยอร์เครื่องดนตรีกับ MIDI แล้วส่งออก ไม่มีเปียโนโรล",
+    "studioName": "สตูดิโอ",
+    "studioLead": "DAW เต็มรูปแบบพร้อมชีต World",
+    "studioBody": "Arrange กับเปียโนโรลสำหรับแก้ World สำหรับมุม Growtopia",
+    "later": "เปลี่ยนได้ที่ ไฟล์ → โหมดแอป",
+    "change": "โหมดแอป",
+    "simpleHint": "แต่ละเครื่องเป็นเลเยอร์ ใช้ + เลเยอร์ หรือเพิ่มเลเยอร์ MIDI",
+    "addLayer": "+ เลเยอร์"
+  },
+  "announce": {
+    "title": "มีอะไรใหม่",
+    "open": "มีอะไรใหม่",
+    "dontShow": "ไม่ต้องแสดงอีก",
+    "close": "ปิด"
+  }
+}

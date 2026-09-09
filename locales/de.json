@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "de",
+    "name": "German",
+    "nativeName": "Deutsch"
+  },
+  "ui": {
+    "language": "Sprache"
+  },
+  "intro": {
+    "title": "Willkommen bei {name}",
+    "lead": "Wie möchtest du schreiben? Später unter Datei wechselbar.",
+    "simpleName": "Einfach",
+    "simpleLead": "Nur das Growtopia-Notenblatt — wie ein Planer.",
+    "simpleBody": "Kacheln setzen, Instrument- und MIDI-Ebenen hinzufügen, dann exportieren. Kein Piano-Roll.",
+    "studioName": "Studio",
+    "studioLead": "Vollständige DAW plus World-Blatt.",
+    "studioBody": "Arrange und Piano-Roll zum Bearbeiten, World für die Growtopia-Ansicht.",
+    "later": "Änderbar unter Datei → App-Modus.",
+    "change": "App-Modus",
+    "simpleHint": "Jedes Instrument ist eine Ebene. Nutze + Ebene oder MIDI-Ebenen.",
+    "addLayer": "+ Ebene"
+  },
+  "announce": {
+    "title": "Neuigkeiten",
+    "open": "Neuigkeiten",
+    "dontShow": "Nicht mehr anzeigen",
+    "close": "Schließen"
+  }
+}

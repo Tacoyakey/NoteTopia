@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "vi",
+    "name": "Vietnamese",
+    "nativeName": "Tiếng Việt"
+  },
+  "ui": {
+    "language": "Ngôn ngữ"
+  },
+  "intro": {
+    "title": "Chào mừng đến {name}",
+    "lead": "Bạn muốn viết thế nào? Có thể đổi sau trong Tệp.",
+    "simpleName": "Đơn giản",
+    "simpleLead": "Chỉ bản nhạc Growtopia — như công cụ lập kế hoạch.",
+    "simpleBody": "Đặt ô, thêm lớp nhạc cụ và MIDI, rồi xuất. Không có piano roll.",
+    "studioName": "Studio",
+    "studioLead": "DAW đầy đủ cộng tờ World.",
+    "studioBody": "Arrange và piano roll để sửa; World cho góc Growtopia.",
+    "later": "Đổi trong Tệp → Chế độ ứng dụng.",
+    "change": "Chế độ ứng dụng",
+    "simpleHint": "Mỗi nhạc cụ là một lớp. Dùng + Lớp hoặc Thêm lớp MIDI.",
+    "addLayer": "+ Lớp"
+  },
+  "announce": {
+    "title": "Có gì mới",
+    "open": "Có gì mới",
+    "dontShow": "Không hiện lại",
+    "close": "Đóng"
+  }
+}

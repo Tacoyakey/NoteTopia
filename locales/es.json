@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": "es",
+    "name": "Spanish",
+    "nativeName": "Español"
+  },
+  "ui": {
+    "language": "Idioma"
+  },
+  "intro": {
+    "title": "Bienvenido a {name}",
+    "lead": "¿Cómo quieres escribir? Puedes cambiarlo luego en Archivo.",
+    "simpleName": "Simple",
+    "simpleLead": "Solo la partitura de Growtopia — como un planificador.",
+    "simpleBody": "Coloca teselas, añade capas de instrumentos y MIDI, y exporta. Sin piano roll.",
+    "studioName": "Estudio",
+    "studioLead": "DAW completo más la hoja World.",
+    "studioBody": "Arrange y piano roll para editar; World para la vista Growtopia.",
+    "later": "Puedes cambiarlo en Archivo → Modo de la app.",
+    "change": "Modo de la app",
+    "simpleHint": "Cada instrumento es una capa. Usa + Capa o Añadir capas MIDI.",
+    "addLayer": "+ Capa"
+  },
+  "announce": {
+    "title": "Novedades",
+    "open": "Novedades",
+    "dontShow": "No volver a mostrar",
+    "close": "Cerrar"
+  }
+}
